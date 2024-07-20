@@ -32,8 +32,13 @@
     },
     {
       "group": "API Contribuyentes",
-      "pages": [
-        "api-reference/api-contribuyentes/consultas-publicas/situacion-tributaria-de-un-contribuyente"
+      "sections": [
+        {
+            "group": "Consultas públicas",
+            "pages": [
+                "api-reference/api-contribuyentes/consultas-publicas/situacion-tributaria-de-un-contribuyente"
+            ]
+        }
       ]
     }
   ],
