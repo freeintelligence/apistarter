@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
+    "title": "API Dtefy Docs",
+    "description": "",
     "license": {
       "name": "MIT"
     },
@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://dtefy.legacy.simple.alvaci.com"
     }
   ],
   "security": [
@@ -96,28 +96,51 @@
         }
       }
     },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+    "/api/v1/sii/contribuyentes/situacion_tributaria/tercero/{rut}": {
+      "get": {
+        "description": "Permite obtener la situación tributaria de un contribuyente.",
         "parameters": [
           {
-            "name": "id",
+            "name": "rut",
             "in": "path",
-            "description": "ID of plant to delete",
+            "description": "RUT del contribuyente",
             "required": true,
             "schema": {
-              "type": "integer",
-              "format": "int64"
+              "type": "string"
             }
           }
         ],
         "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
+          "200": {
+            "description": "Información del contribuyente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "rut": {
+                      "description": "RUT del contribuyente sin dígito verificador",
+                      "type": "string"
+                    },
+                    "dv": {
+                      "description": "Dígito verificador del RUT del contribuyente",
+                      "type": "string"
+                    },
+                    "razon_social": {
+                      "description": "Razón social del contribuyente",
+                      "type": "string"
+                    },
+                    "inicio_actividades": {
+                      "description": "El contribuyente tiene iniciadas sus actividades",
+                      "type": "boolean"
+                    }
+                  }
+                }
+              }
+            }
           },
           "400": {
-            "description": "unexpected error",
+            "description": "Unexpected error",
             "content": {
               "application/json": {
                 "schema": {
@@ -170,16 +193,20 @@
       },
       "Error": {
         "required": [
-          "error",
-          "message"
+          "code",
+          "message",
+          "errorName"
         ],
         "type": "object",
         "properties": {
-          "error": {
+          "code": {
             "type": "integer",
             "format": "int32"
           },
           "message": {
+            "type": "string"
+          },
+          "errorName": {
             "type": "string"
           }
         }
