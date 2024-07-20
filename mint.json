@@ -32,7 +32,8 @@
     },
     {
       "group": "API Contribuyentes",
-      "subgroups": [
+      "pages": [
+        "api-reference/introduction",
         {
             "group": "Consultas públicas",
             "pages": [
