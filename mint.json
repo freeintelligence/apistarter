@@ -25,20 +25,15 @@
   "anchors": [],
   "navigation": [
     {
-      "group": "API Documentation",
+      "group": "Documentación de API",
       "pages": [
         "api-reference/introduction"
       ]
     },
     {
       "group": "API Contribuyentes",
-      "sections": [
-        {
-            "group": "Consultas públicas",
-            "pages": [
-                "api-reference/api-contribuyentes/consultas-publicas/situacion-tributaria-de-un-contribuyente"
-            ]
-        }
+      "pages": [
+          "api-reference/api-contribuyentes/consultas-publicas/situacion-tributaria-de-un-contribuyente"
       ]
     }
   ],

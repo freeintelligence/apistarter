@@ -1,33 +1,37 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: 'Introducción'
+description: 'API con diferentes funcionalidades para interactuar con los servicios del Servicio de Impuestos Internos de Chile.'
 ---
 
 <Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
+  Esta API no tiene relación directa con el SII.
 </Note>
 
-## Welcome
+## API Authentication
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
-
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
-
-## Authentication
-
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+Para utilizar esta API es necesario disponer de un token y enviarlo en las cabeceras:
 
 ```json
-"security": [
+"headers": [
   {
-    "bearerAuth": []
+    "Authorization": "Bearer <token>"
+  }
+]
+```
+
+## SII Authentication
+
+La mayoría de los servicios en esta API necesitan iniciar sesión en el SII. Por esto es necesario enviar los datos de acceso a la cuenta en el `body` de la solicitud:
+
+```json
+"body": [
+  {
+    "auth": {
+      "pass": {
+        "rut": "<string>",
+        "clave": "<string>"
+      }
+    }
   }
 ]
 ```
